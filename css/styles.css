@@ -1,0 +1,51 @@
+:root {
+  --color-background: #9793A4;
+  --color-text: #292240;
+  --color-visited: #3F3A52;
+  --heading-font-weight: 700;
+  --standard-padding: 20px;
+  --grid-gap: 20px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--color-text);
+  background-color: var(--color-background);
+  height: 100%;
+}
+
+.body-grid {
+  display: grid;
+  width: 100%;
+  grid-template-columns: 1fr 2fr;
+  grid-gap: var(--grid-gap);
+  padding: var(--standard-padding);
+  margin: 0;
+}
+
+.navigation-list {
+  list-style-type: none;
+}
+
+a {
+  color: var(--color-text);
+}
+
+a:visited {
+  /* visited link */
+  color: var(--color-visited);
+}
+
+a:hover,
+a:focus {
+  /* No underlining when hovering over a link */
+  text-decoration: none;
+}
