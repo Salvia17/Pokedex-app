@@ -30,6 +30,7 @@ for (let i=0; i < pokemonList.length; i++){
   document.write (pokemonList[i].name, ' ' + '(height: ', pokemonList[i].height, ')');
   if (pokemonList[i].height > 1.3){
     document.write (' - WOW! That\'s big!' + '</br>', '</br>');
+    //adding line break after each pokemon, that's without the phrase WOW that's big//
   }else {
     document.write ('</br>', '</br>')
   }
