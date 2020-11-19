@@ -41,6 +41,8 @@ let pokemonRepository = (function() {
   };
 })();
 
+pokemonRepository.add({name: 'Pikachu', height: 0.4, types: ['Electric']});
+
 pokemonRepository.getAll().forEach(function(pokemon) {
   if (pokemon.height > 1.3) {
     document.write (
