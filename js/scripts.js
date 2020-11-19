@@ -1,32 +1,47 @@
-let pokemonList = [
-{
-  name: 'Slowpoke',
-  height: 1.2,
-  types: ['Psychic', ' Water']
-},
-{
-  name: 'Jigglypuff',
-  height: 0.5,
-  types: ['Fairy', ' Normal']
-},
-{
-  name: 'Charizard',
-  height: 1.7,
-  types: ['Fire', ' Flying']
-},
-{
-  name: 'Psyduck',
-  height: 0.8,
-  types: ['Water']
-},
-{
-  name: 'Starmie',
-  height: 1.1,
-  types: ['Psychic', ' Water']
-},
-];
+let pokemonRepository = (function() {
+  let pokemonList = [
+  {
+    name: 'Slowpoke',
+    height: 1.2,
+    types: ['Psychic', ' Water']
+  },
+  {
+    name: 'Jigglypuff',
+    height: 0.5,
+    types: ['Fairy', ' Normal']
+  },
+  {
+    name: 'Charizard',
+    height: 1.7,
+    types: ['Fire', ' Flying']
+  },
+  {
+    name: 'Psyduck',
+    height: 0.8,
+    types: ['Water']
+  },
+  {
+    name: 'Starmie',
+    height: 1.1,
+    types: ['Psychic', ' Water']
+  },
+  ];
 
-pokemonList.forEach(function(pokemon) {
+  function add(pokemon) {
+    pokemonList.push(pokemon);
+  }
+
+  function getAll() {
+    return pokemonList;
+  }
+
+  return {
+    add: add,
+    getAll: getAll
+  };
+})();
+
+pokemonRepository.getAll().forEach(function(pokemon) {
   if (pokemon.height > 1.3) {
     document.write (
       `Name: ${pokemon.name} (type: ${pokemon.types}), (height: ${pokemon.height}) - WOW! That's big! <br><br>`
@@ -37,14 +52,3 @@ pokemonList.forEach(function(pokemon) {
       );
     }
   });
-
-
-//for (let i=0; i < pokemonList.length; i++){
-  //document.write (pokemonList[i].name, ' ' + '(height: ', pokemonList[i].height, ')');
-  //if (pokemonList[i].height > 1.3){
-  //  document.write (' - WOW! That\'s big!' + '</br>', '</br>');
-    //adding line break after each pokemon, that's without the phrase WOW that's big//
-//  }else {
-  //  document.write ('</br>', '</br>')
-//  }
-//}
