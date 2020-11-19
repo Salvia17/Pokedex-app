@@ -28,6 +28,9 @@ let pokemonRepository = (function() {
   ];
 
   function add(pokemon) {
+    if (typeof pokemon !== 'object') {
+      return 0;
+    }
     pokemonList.push(pokemon);
   }
 
@@ -41,7 +44,11 @@ let pokemonRepository = (function() {
   };
 })();
 
+//test to try and add a Pokemon to the list, if it's an object. Function works
 pokemonRepository.add({name: 'Pikachu', height: 0.4, types: ['Electric']});
+
+//test to try and add a Pokemon to the list, if it's not an object.Function fails
+pokemonRepository.add('name: Raichu, height: 0.8, types: [Electric]');
 
 pokemonRepository.getAll().forEach(function(pokemon) {
   if (pokemon.height > 1.3) {
