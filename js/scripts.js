@@ -51,13 +51,24 @@ pokemonRepository.add({name: 'Pikachu', height: 0.4, types: ['Electric']});
 pokemonRepository.add('name: Raichu, height: 0.8, types: [Electric]');
 
 pokemonRepository.getAll().forEach(function(pokemon) {
-  if (pokemon.height > 1.3) {
-    document.write (
-      `Name: ${pokemon.name} (type: ${pokemon.types}), (height: ${pokemon.height}) - WOW! That's big! <br><br>`
-    );
-  } else {
-      document.write (
-        `Name: ${pokemon.name} (type: ${pokemon.types}), (height: ${pokemon.height}).<br><br>`
-      );
-    }
-  });
+  let pokeList = document.querySelector('.pokemon-list');
+  let listItem = document.createElement('li');
+  let button = document.createElement('button');
+  button.innerText = pokemon.name;
+  button.classList.add('button');
+  listItem.appendChild(button);
+  pokeList.appendChild(listItem);
+});
+
+
+
+  //if (pokemon.height > 1.3) {
+  //  document.write (
+  //    `Name: ${pokemon.name} (type: ${pokemon.types}), (height: ${pokemon.height}) - WOW! That's big! <br><br>`
+  //  );
+//  } else {
+    //  document.write (
+      //  `Name: ${pokemon.name} (type: ${pokemon.types}), (height: ${pokemon.height}).<br><br>`
+    //  );
+//    }
+//  });
