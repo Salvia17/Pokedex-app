@@ -52,12 +52,19 @@ let pokemonRepository = (function() {
     button.classList.add('button');
     listItem.appendChild(button);
     pokeList.appendChild(listItem);
+    button.addEventListener('click', function(event){showDetails(pokemon.name)
+    })
+  }
+
+  function showDetails (pokemon) {
+    console.log(pokemon);
   }
 
   return {
     add: add,
     getAll: getAll,
-    addListItem: addListItem
+    addListItem: addListItem,
+    showDetails: showDetails
   };
 })();
 
