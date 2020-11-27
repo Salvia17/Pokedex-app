@@ -25,15 +25,24 @@ body {
 
 .body-grid {
   display: grid;
-  justify-content: center;
-  width: 100%;
-  grid-template-columns: 1fr;
+  height: 100%;
+  grid-template-rows: 50px 1fr;
   grid-gap: var(--grid-gap);
   padding: var(--standard-padding);
   margin: 0;
 }
 
-.body-grid ul {
+.title {
+  text-align: center;
+}
+
+.title h1 {
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+}
+
+.body-grid div, ul {
   display: inline-block;
   margin: 0;
   padding: 0;
