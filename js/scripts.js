@@ -28,11 +28,18 @@ let pokemonRepository = (function() {
   ];
 
   function add(pokemon) {
-    if (typeof pokemon !== 'object') {
+    if (
+      typeof pokemon === 'object' &&
+      'name' in pokemon &&
+      'height' in pokemon &&
+      'types' in pokemon
+    ) {
+      pokemonList.push(pokemon);
+    } else {
       return 0;
     }
-    pokemonList.push(pokemon);
   }
+
 
   function getAll() {
     return pokemonList;
