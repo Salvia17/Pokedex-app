@@ -1,38 +1,11 @@
 let pokemonRepository = (function() {
-  let pokemonList = [
-  {
-    name: 'Slowpoke',
-    height: 1.2,
-    types: ['Psychic', ' Water']
-  },
-  {
-    name: 'Jigglypuff',
-    height: 0.5,
-    types: ['Fairy', ' Normal']
-  },
-  {
-    name: 'Charizard',
-    height: 1.7,
-    types: ['Fire', ' Flying']
-  },
-  {
-    name: 'Psyduck',
-    height: 0.8,
-    types: ['Water']
-  },
-  {
-    name: 'Starmie',
-    height: 1.1,
-    types: ['Psychic', ' Water']
-  },
-  ];
+  let pokemonList = [];
+  let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
 
   function add(pokemon) {
     if (
       typeof pokemon === 'object' &&
-      'name' in pokemon &&
-      'height' in pokemon &&
-      'types' in pokemon
+      'name' in pokemon
     ) {
       pokemonList.push(pokemon);
     } else {
@@ -56,37 +29,55 @@ let pokemonRepository = (function() {
     })
   }
 
+  function loadList() {
+    return fetch(apiUrl).then(function (response) {
+      return response.json();
+    }).then(function (json) {
+      json.results.forEach(function (item) {
+        let pokemon = {
+          name: item.name,
+          detailsUrl: item.url
+        };
+        add(pokemon);
+        console.log(pokemon);
+      });
+    }).catch(function (e) {
+      console.error(e);
+    })
+  }
+
+  function loadDetails(item) {
+    let url = item.detailsUrl;
+    return fetch(url).then(function (response) {
+      return response.json();
+    }).then(function (details) {
+// Now we add the details to the item
+      item.imageUrl = details.sprites.front_default;
+      item.height = details.height;
+      item.types = details.types;
+    }).catch(function (e) {
+      console.error(e);
+    });
+  }
+
   function showDetails (pokemon) {
-    console.log(pokemon);
+    loadDetails(pokemon).then(function () {
+      console.log(pokemon);
+    });
   }
 
   return {
     add: add,
     getAll: getAll,
     addListItem: addListItem,
-    showDetails: showDetails
+    showDetails: showDetails,
+    loadList: loadList,
+    loadDetails: loadDetails
   };
 })();
 
-//test to try and add a Pokemon to the list, if it's an object. Function works
-pokemonRepository.add({name: 'Pikachu', height: 0.4, types: ['Electric']});
-
-//test to try and add a Pokemon to the list, if it's not an object.Function fails
-pokemonRepository.add('name: Raichu, height: 0.8, types: [Electric]');
-
-pokemonRepository.getAll().forEach(function(pokemon) {
-  pokemonRepository.addListItem(pokemon);
+pokemonRepository.loadList().then(function() {
+  pokemonRepository.getAll().forEach(function(pokemon) {
+    pokemonRepository.addListItem(pokemon);
+  });
 });
-
-
-
-  //if (pokemon.height > 1.3) {
-  //  document.write (
-  //    `Name: ${pokemon.name} (type: ${pokemon.types}), (height: ${pokemon.height}) - WOW! That's big! <br><br>`
-  //  );
-//  } else {
-    //  document.write (
-      //  `Name: ${pokemon.name} (type: ${pokemon.types}), (height: ${pokemon.height}).<br><br>`
-    //  );
-//    }
-//  });
