@@ -25,7 +25,8 @@ let pokemonRepository = (function() {
     button.classList.add('button');
     listItem.appendChild(button);
     pokeList.appendChild(listItem);
-    button.addEventListener('click', function(event){showDetails(pokemon.name)
+    button.addEventListener('click', function(event)
+    {showDetails(pokemon)
     })
   }
 
@@ -51,7 +52,6 @@ let pokemonRepository = (function() {
     return fetch(url).then(function (response) {
       return response.json();
     }).then(function (details) {
-// Now we add the details to the item
       item.imageUrl = details.sprites.front_default;
       item.height = details.height;
       item.types = details.types;
