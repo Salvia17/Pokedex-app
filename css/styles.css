@@ -47,6 +47,8 @@ body {
 
 .pokemon-list {
   list-style-type: none;
+  margin: auto;
+  padding: 0;
 }
 
 .pokemon-list li {
