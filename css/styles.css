@@ -43,8 +43,6 @@ body {
 
 .body-grid div, ul {
   display: inline-block;
-  margin: 0;
-  padding: 0;
 }
 
 .pokemon-list {
@@ -69,6 +67,7 @@ body {
   border-right: 2px solid rgba(0, 0, 0, 0.3);
   border-bottom: 2px solid rgba(0, 0, 0, 0.3);
   transition: 0.2s opacity;
+  min-width: 120px;
 }
 
 .button:hover,
@@ -103,7 +102,7 @@ opacity: 0.8;
 }
 
 .modal {
-  margin: 0;
+  margin: auto;
   display: inline-block;
   align-self: center;
   box-sizing: border-box;
