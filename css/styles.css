@@ -7,59 +7,31 @@
   --grid-gap: 20px;
 }
 
-* {
-  box-sizing: border-box;
-}
-
 html,
 body {
-  font-family: 'Lato', sans-serif;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 1.6;
   color: var(--color-text);
   background-color: var(--color-background);
-  height: 100%;
 }
 
-.body-grid {
-  display: grid;
-  height: 100%;
-  grid-template-rows: 50px 1fr;
-  grid-gap: var(--grid-gap);
-  padding: var(--standard-padding);
+.main-wrap {
+  margin-top: 20px;
+}
+
+.navbar-brand {
+  text-align: center;
   margin: 0;
+  color: var(--color-text);
+  font-weight: var(--heading-font-weight);
+  font-size: 50px;
 }
 
-.title {
+ul {
   text-align: center;
 }
 
-.title h1 {
-  display: inline-block;
-  margin: 0;
-  padding: 0;
-}
-
-.body-grid div, ul {
-  display: inline-block;
-}
-
-.pokemon-list {
-  list-style-type: none;
-  margin: auto;
-  padding: 0;
-}
-
-.pokemon-list li {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.button {
+.btn {
   border: none;
-  font-family: inherit;
+  /*font-family: inherit;*/
   background-color: var(--color-button);
   color: var(--color-text);
   text-decoration: none;
@@ -72,55 +44,43 @@ body {
   min-width: 120px;
 }
 
-.button:hover,
-.button:focus {
-cursor: pointer;
-opacity: 0.8;
+.btn:hover,
+.btn:focus {
+  cursor: pointer;
+  opacity: 0.8;
 }
 
-#modal-container {
-  display: none;
+.btn::first-letter {
+  text-transform: uppercase;
 }
 
-#modal-container.is-visible {
-  position: fixed;
-  padding: 20px;
-  box-sizing: border-box;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5);
-
-  /* to show it above other content */
-  z-index: 999;
-
-  /* to allow scrolling if the screen is not high enough*/
-  overflow: auto;
-
-  /* this is used to center the modal */
-  display: grid;
-  text-align: center;
-}
-
-.modal {
-  margin: auto;
-  display: inline-block;
-  align-self: center;
+.modal-content {
   box-sizing: border-box;
   background: var(--color-background);
-  padding: 15px;
-  width: 100%;
-  max-width: 700px;
   border: 4px solid rgba(0, 0, 0, 0.2);
 }
 
-.modal-close {
-  float: right;
-  -webkit-appearance: none;
-  border: 0;
-  background: none;
+.modal-header {
+  border: none;
+}
+
+.modal-title {
+  text-align: center;
+}
+
+.modal-title::first-letter {
+  text-transform: uppercase;
+}
+
+.navbar {
+  display: flex;
+  justify-content: center;
+  background-color: var(--color-button);
   color: var(--color-text);
-  text-decoration: none;
-  cursor: pointer;
+}
+
+.pokeball-logo {
+  width: 50px;
+  height: auto;
+  margin-left: 20px;
 }
