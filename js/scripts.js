@@ -72,6 +72,7 @@ let pokemonRepository = (function() {
 //Implementing Bootstrap modal function
   function showModal(pokemon) {
     let modalBody = $('.modal-body');
+    let modalHeader = $('.modal-header');
     let modalTitle = $('.modal-title');
 
 //This empties modal title and modal body so that the fetched info can be displayed
@@ -84,6 +85,7 @@ let pokemonRepository = (function() {
 
     let imageElement = $('<img class="modal-img" style="width 50%">');
     imageElement.attr('src', pokemon.imageUrl);
+
 
     modalTitle.append(nameElement);
     modalBody.append(heightElement);
