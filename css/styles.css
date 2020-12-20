@@ -31,7 +31,6 @@ ul {
 
 .btn {
   border: none;
-  /*font-family: inherit;*/
   background-color: var(--color-button);
   color: var(--color-text);
   text-decoration: none;
@@ -61,11 +60,11 @@ ul {
 }
 
 .modal-header {
-  border: none;
+  border-bottom: 4px solid rgba(0, 0, 0, 0.2);
 }
 
-.modal-title {
-  text-align: center;
+.modal-title, h1 {
+  margin: 0;
 }
 
 .modal-title::first-letter {
