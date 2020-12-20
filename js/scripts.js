@@ -28,7 +28,7 @@ let pokemonRepository = (function() {
     button.setAttribute('data-target', '#pokemonModal');
     listItem.appendChild(button);
     pokeList.appendChild(listItem);
-    button.addEventListener('click', (e) => {
+    button.addEventListener('click', () => {
       showDetails(pokemon);
     })
   }
@@ -37,7 +37,7 @@ let pokemonRepository = (function() {
     loadDetails(pokemon).then(function () {
       showModal(pokemon);
     });
-  };
+  }
 
   function loadList() {
     return fetch(apiUrl).then(function (response) {
@@ -49,7 +49,6 @@ let pokemonRepository = (function() {
           detailsUrl: item.url
         };
         add(pokemon);
-        console.log(pokemon);
       });
     }).catch(function (e) {
       console.error(e);
@@ -63,7 +62,7 @@ let pokemonRepository = (function() {
     }).then(function (details) {
       item.imageUrl = details.sprites.front_default;
       item.height = details.height;
-      item.types = details.types;
+      item.weight = details.weight;
     }).catch(function (e) {
       console.error(e);
     });
@@ -72,7 +71,6 @@ let pokemonRepository = (function() {
 //Implementing Bootstrap modal function
   function showModal(pokemon) {
     let modalBody = $('.modal-body');
-    let modalHeader = $('.modal-header');
     let modalTitle = $('.modal-title');
 
 //This empties modal title and modal body so that the fetched info can be displayed
@@ -83,12 +81,14 @@ let pokemonRepository = (function() {
 
     let heightElement = $('<p>' + 'Height: ' + pokemon.height + '</p>');
 
-    let imageElement = $('<img class="modal-img" style="width 50%">');
-    imageElement.attr('src', pokemon.imageUrl);
+    let weightElement = $('<p>' + 'Weight: ' + pokemon.weight + '</p>');
+
+    let imageElement = $(`<img src="${pokemon.imageUrl}" class="modal-img" style="width 50%">`);
 
 
     modalTitle.append(nameElement);
     modalBody.append(heightElement);
+    modalBody.append(weightElement);
     modalBody.append(imageElement);
   }
 
