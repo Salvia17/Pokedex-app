@@ -9,13 +9,13 @@ Fetched information includes name, height, weight and an image.
 
 View it live HERE
 
-##Technologies:
+## Technologies:
 JavaScript
 HTML
 CSS
 Bootstrap
 
-##Key Features:
+## Key Features:
 Loads Pokémon data from an external API
 Ability to view a list of Pokémon
 Ability to view details of specific Pokémon on pop-up modal at the click of a button
